@@ -36,7 +36,7 @@ def blackToGray(image):
     image[black_mask] = [128, 128, 128]
     return image
 
-def npToPygame(image, w=32, h=32, alpha=False):
+def npToPygame(image, w=16, h=16, alpha=False):
     """Converts a numpy array image to a pygame surface.
     
     Args:
@@ -106,11 +106,11 @@ class Robot:
                 "R": cv2.ROTATE_90_CLOCKWISE
             }
             res = cv2.rotate(robotMap, rotation[direction])
-        res = cv2.resize(res, (32, 32))
+        res = cv2.resize(res, (16, 16))
         
         # Add alpha channel and make black pixels transparent
         r, g, b = res[:, :, 0], res[:, :, 1], res[:, :, 2]
-        alpha = np.ones((32, 32), dtype=np.uint8) * 255
+        alpha = np.ones((16, 16), dtype=np.uint8) * 255
         # Make black pixels (all channels < 30) transparent
         black_mask = (r < 30) & (g < 30) & (b < 30)
         alpha[black_mask] = 0
@@ -120,53 +120,53 @@ class Robot:
     
 waterMap = cv2.imread("ressources/assets/water.png")
 waterMap = cv2.cvtColor(waterMap, cv2.COLOR_BGR2RGB)
-waterMap = cv2.resize(waterMap, (32, 32))
+waterMap = cv2.resize(waterMap, (16, 16))
 waterMap = blackToGray(waterMap)
 WATER_IMG = npToPygame(waterMap)
 
 mudMap = cv2.imread("ressources/assets/mud.png")
 mudMap = cv2.cvtColor(mudMap, cv2.COLOR_BGR2RGB)
-mudMap = cv2.resize(mudMap, (32, 32))
+mudMap = cv2.resize(mudMap, (16, 16))
 mudMap = blackToGray(mudMap)
 MUD_IMG = npToPygame(mudMap)
 
 portalMap = cv2.imread("ressources/assets/portal.png")
 portalMap = cv2.cvtColor(portalMap, cv2.COLOR_BGR2RGB)
-portalMap = cv2.resize(portalMap, (32, 32))
+portalMap = cv2.resize(portalMap, (16, 16))
 portalMap = blackToGray(portalMap)
 PORTAL_IMG = npToPygame(portalMap)
 
-groundMap = np.ones((32, 32, 3), np.uint8)*255
+groundMap = np.ones((16, 16, 3), np.uint8)*255
 GROUND_IMG = npToPygame(groundMap)
 
 refuelMap = cv2.imread("ressources/assets/refuel.png")
 refuelMap = cv2.cvtColor(refuelMap, cv2.COLOR_BGR2RGB)
-refuelMap = cv2.resize(refuelMap, (32, 32))
+refuelMap = cv2.resize(refuelMap, (16, 16))
 refuelMap = blackToGray(refuelMap)
 REFUEL_IMG = npToPygame(refuelMap)
 
 checkpointMap = cv2.imread("ressources/assets/checkpoint.png")
 checkpointMap = cv2.cvtColor(checkpointMap, cv2.COLOR_BGR2RGB)
-checkpointMap = cv2.resize(checkpointMap, (32, 32))
+checkpointMap = cv2.resize(checkpointMap, (16, 16))
 checkpointMap = blackToGray(checkpointMap)
 CHECKPOINT_IMG = npToPygame(checkpointMap)
 
 startMap = cv2.imread("ressources/assets/start.png")
 startMap = cv2.cvtColor(startMap, cv2.COLOR_BGR2RGB)
-startMap = cv2.resize(startMap, (32, 32))
+startMap = cv2.resize(startMap, (16, 16))
 startMap = blackToGray(startMap)
 START_IMG = npToPygame(startMap)
 
 endMap = cv2.imread("ressources/assets/end.png")
 endMap = cv2.cvtColor(endMap, cv2.COLOR_BGR2RGB)
-endMap = cv2.resize(endMap, (32, 32))
+endMap = cv2.resize(endMap, (16, 16))
 endMap = blackToGray(endMap)
 END_IMG = npToPygame(endMap)
 
-wallMap = np.ones((32, 32, 3), np.uint8) * 128  # gray color
+wallMap = np.ones((16, 16, 3), np.uint8) * 128  # gray color
 WALL_IMG = npToPygame(wallMap)
 
 # Create a small green dot for visited cells (16x16)
-dotMap = np.ones((16, 16, 3), np.uint8) * 200  # light gray background
-cv2.circle(dotMap, (8, 8), 5, (0, 200, 0), -1)  # green dot in the center
-DOT_IMG = npToPygame(dotMap, 16, 16)
+dotMap = np.ones((8, 8, 3), np.uint8) * 200  # light gray background
+cv2.circle(dotMap, (4, 4), 3, (0, 200, 0), -1)  # green dot in the center
+DOT_IMG = npToPygame(dotMap, 8, 8)

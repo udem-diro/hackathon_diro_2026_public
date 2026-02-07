@@ -104,7 +104,7 @@ def test(maze=TEST_MAZE, moves: str = "", level: int = 1, delay: int = 500, disp
         return at_end and checkpoints_ok and cost_ok
 
     pygame.init()
-    WIDTH, HEIGHT = width*32, len(maze)*32
+    WIDTH, HEIGHT = width*16, len(maze)*16
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
 
     icon = pygame.image.load("ressources/assets/maze.png")
@@ -177,18 +177,18 @@ def test(maze=TEST_MAZE, moves: str = "", level: int = 1, delay: int = 500, disp
         # Draw maze
         for i, row in enumerate(maze):
             for j, cell in enumerate(row.strip()):
-                x = j * 32
-                y = i * 32
+                x = j * 16
+                y = i * 16
                 displayCell = getDisplayChar(cell, level)
                 screen.blit(IMG[displayCell], (x, y))
                 
                 # Draw green dot if visited
                 if visited[(i, j)]:
-                    screen.blit(DOT_IMG, (x + 8, y + 8))
+                    screen.blit(DOT_IMG, (x + 4, y + 4))
         
         # Draw robot (red if dead, green if won, dark gray at start)
-        robotX = robot.x * 32
-        robotY = robot.y * 32
+        robotX = robot.x * 16
+        robotY = robot.y * 16
         if not robot.isAlive():
             robotColor = (255, 0, 0)  # Red when dead
         elif won:

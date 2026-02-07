@@ -1,0 +1,32 @@
+# Niveau 5 : Points de Contrôle
+
+## 📋 Objectif
+Atteindre l'arrivée **E** en passant par **TOUS** les points de contrôle **C**.
+
+## 🗺️ Éléments
+
+| Symbole | Nom | Coût | Effet |
+|---------|-----|------|--------|
+| `S` | Départ | - | - |
+| `E` | Arrivée | - | - |
+| `#` | Mur | - | - |
+| `.` | Sol | 1 | - |
+| `~` | Eau | 200 | - |
+| `X` | Boue | 30 000 | - |
+| `P` | Portail | 1 | Téléporte (x,y) → (y,x) |
+| `C` | Point de Contrôle | 1 | À visiter obligatoirement |
+
+## ⚡ Ressources
+- **Stamina :** Illimité
+- **Limite de coût optimal :** ≤ 122 919 stamina
+
+## 🎮 Comment Jouer
+
+Vous devez passer par tous les points de contrôle avant d'atteindre l'arrivée.
+
+C'est un problème de Traveling Salesman Problem (TSP). Trouvez la meilleure permutation de points de contrôle à visiter.
+
+## 🎯 Conditions de Réussite
+✓ Vous avez atteint l'arrivée `E`
+✓ Vous avez visité TOUS les points de contrôle `C`
+✓ Coût total ≤ 122 919 stamina
