@@ -1,0 +1,59 @@
+Bonjour,
+
+Merci pour votre intérêt et votre inscription!
+Voici les détails concernant le Hackathon du DIRO auquel vous êtes inscrit.e.s la fin de semaine prochaine.
+
+Accueil
+Nous allons vous accueillir à partir de 9h00 samedi et 9h30 dimanche.
+
+Nourriture
+Le déjeuner, le repas du midi vous seront offerts les deux journées. Un souper est aussi offert samedi soir. Les breuvages incluent des jus et du café.
+
+Matériel
+Il vous faudra apporter votre propre ordinateur portable. Si vous n'en avez pas, vous allez vous jumeler avec d'autres personnes de votre équipe et faire du pair programming. Des comptes d'accès au réseau wifi vous seront remis à l'accueil samedi.
+ 
+ 
+Le défi
+Cette année, le défi consistera en plusieurs petits puzzles informatiques diversifiés qui ont été concoctés par notre équipe d'étudiant.e.s universitaires.
+Chaque petit puzzle représentera un domaine de l'informatique et aura plusieurs niveaux de difficulté (de facile à... presque impossible). Le hackathon demandera alors beaucoup de coordination dans votre équipe pour accumuler le plus de points possible. 
+Un équilibre devra être trouvé entre résolution optimale d'un puzzle et exploration de plusieurs puzzles en même temps.
+Les détails des défis seront présentés samedi matin :)
+
+Langages, installations et autres préresquis
+Certains défis seront en Java, d'autres en Python, certains seront dans le langage de votre choix.
+Donc nous recommandons d'avoir installé sur votre ordi personnel les environnement de développement pour Python3 et Java (JDK 21). Ce choix des 2 langages est basé sur notre court sondage auprès des cégeps.
+Des détails vont suivre la semaine prochaine pour d'autres installations pré-hackathon, non obligatoires, mais qui pourront vous faciliter la tâche au début du hackathon.
+Nous recommandons aussi d'avoir au minimum une personne avec un compte Discord par équipe (idéalement chaque membre), car nous allons utiliser un serveur spécifiquement pour échanger rapidement sur les défis.
+
+Lieu
+L'événement aura lieu au Pavillon André-Aisenstadt de l'Université de Montréal. Il y a plusieurs façons de s'y rendre (métro, voiture, vélo, ...). Si vous choisissez le métro, vous pouvez emprunter les escaliers mécaniques à la sortie du métro. Ces escaliers vous mèneront en haut sur le campus, juste en face de la grande tour. Voici un visuel de comment se rendre à notre pavillon à partir de ce moment :
+
+
+Une fois à l'intérieur du pavillon au 1er étage, immédiatement à gauche, le café étudiant servira d'accueil.
+Le défi se déroulera à la bibliothèque au 2e étage du pavillon. Chaque équipe aura un mini local de travail dédié.
+Les repas du midi et du soir auront lieu au 6e étage du pavillon au grand salon.
+Finalement, les présentations et la remise des prix auront lieu à l’amphithéâtre au 6e étage du pavillon.
+Les coordonnateurs/coordonatrices des cégeps sont bienvenus pour vous visiter lors du hackathon.
+
+
+
+Voici les informations à propos du stationnement à l'Université de Montréal : https://di.umontreal.ca/services/stationnement/#visiteur
+
+Pour ce qui est du vélo d'hiver, il y a des pistes cyclables sur les rues Édouard-Montpetit, Lacombe et Côte-Sainte-Catherine qui mènent à l'Université. Il y a des supports à vélo juste devant le pavillon André-Aisenstadt.
+
+
+Programmation
+Vous pouvez consulter l'horaire (9h00-22h00 samedi et 9h30-16h30 dimanche) et la programmation sur le site web : https://hackathon.iro.umontreal.ca/
+
+Inscriptions
+Vous êtes présentement 18 équipes confirmées d'étudiant.e.s provenant de 9 cégeps (Vanier, Bois-de-Boulogne, Gérald-Godin, Maisonneuve, Lanaudière, Marianopolis, Ahuntsic, Saint-Hyacinthe, André-Grasset) pour un total de ~60 personnes. On est complet!
+
+Questions
+S'il y a des questions, n'hésitez pas à communiquer avec notre équipe et vos coordonnatrices et coordonnateurs.
+Il y aura sur place plusieurs personnes de l'équipe pour vous guider et répondre à vos questions.
+
+
+
+Au plaisir de vous rencontrer dans notre département!
+
+L'équipe du Hackathon informatique du DIRO - 2026 

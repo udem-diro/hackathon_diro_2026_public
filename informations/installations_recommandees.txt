@@ -1,0 +1,33 @@
+Langages, installations et autres prérequis
+Certains défis seront en Java, d'autres en Python, certains seront dans le langage de votre choix, certains auront des outils associés.
+Nous recommandons les prérequis et installations suivantes avant l'hackathon si vous souhaitez prendre un mini peu d'avance :
+
+    un compte Discord (pour communiquer durant le hackathon)
+    un éditeur de code que vous aimez
+    accès à un LLM que vous utilisez : chatGPT, Gemini, Claude, CoPilot, llama, etc. (oui, ça sera permis dans ce hackathon!)
+    Java
+        JDK21
+        Maven ou Intellij
+    Python
+        Python 3
+        être à l'aise avec un installateur de package comme "pip install numpy"
+        extra : avoir un gestionnaire d’environnement virtuel comme "venv"
+    un framework d'interface graphique avec votre langage préféré, exemples :
+        C# -> WPF, Winforms ou WinUI 3
+        Javascript -> HTML, CSS et SVG
+        Java -> JavaFX
+        Python ->  Numpy et Pygames
+    Docker
+        Docker Desktop 
+
+N'aillez pas peur! Cela semble beaucoup, mais on pourra vous aider pour les installations. 
+De plus, ce ne sont pas tous les défis qui demandent tous ces outils. 
+Aussi, il faudra se distribuer les tâches et défis à l'intérieur de votre équipe.
+
+Internet
+Des comptes wifi vous serons fourni pour avoir accès à l'internet.
+Eduroam devrait aussi fonctionner.
+
+
+Au plaisir de se voir cette fin de semaine,
+Robin
