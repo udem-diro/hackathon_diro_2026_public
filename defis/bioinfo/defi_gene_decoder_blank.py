@@ -46,12 +46,20 @@ class GeneStatistics:
         self.total_genes = 0
         self.gc_content = 0.0
         self.invalid_bases = 0
+        self.gene_lengths = []
+        self.gc_bases = 0
+        self.error_codons = 0
 
     def get_avg_gene_length(self):
-        return 0.0
+        if not self.gene_lengths:
+            return 0.0
+        return sum(self.gene_lengths) / len(self.gene_lengths)
 
     def get_quality_score(self):
-        return 0.0
+        if self.total_codons == 0:
+            return 100.0
+        error_ratio = self.error_codons / self.total_codons
+        return max(0.0, 100.0 * (1.0 - error_ratio))
 
 
 
@@ -68,14 +76,59 @@ class StreamingGenomeDecoder:
     def __init__(self, validate=True):
         self.validate = validate
         self.stats = GeneStatistics()
+        self._codon_buffer = []
+        self._current_gene = []
+        self._in_gene = False
 
     def is_valid_base(self, base):
-        # do it
-        return True
+        return base in ("A", "U", "G", "C")
 
     def process_base(self, base):
-        #do it ;)
-        return []
+        events = []
+        self.stats.total_bases += 1
+
+        if not self.is_valid_base(base):
+            self.stats.invalid_bases += 1
+            if self.validate:
+                return [("ERROR", base)]
+            return []
+
+        if base in ("G", "C"):
+            self.stats.gc_bases += 1
+        valid_bases = self.stats.total_bases - self.stats.invalid_bases
+        if valid_bases > 0:
+            self.stats.gc_content = (self.stats.gc_bases / valid_bases) * 100.0
+
+        self._codon_buffer.append(base)
+        if len(self._codon_buffer) < 3:
+            return events
+
+        codon = "".join(self._codon_buffer)
+        self._codon_buffer.clear()
+
+        token = CODON_TABLE.get(codon, "UNKNOWN")
+        self.stats.total_codons += 1
+        if token == "UNKNOWN":
+            self.stats.error_codons += 1
+        events.append(("CODON", codon, token))
+
+        if token == "START":
+            self._in_gene = True
+            self._current_gene = ["START"]
+            events.append(("START",))
+        elif token == "STOP":
+            if self._in_gene:
+                self._current_gene.append("STOP")
+                self.stats.total_genes += 1
+                self.stats.gene_lengths.append(len(self._current_gene))
+                events.append(("STOP", list(self._current_gene)))
+                self._current_gene = []
+                self._in_gene = False
+        else:
+            if self._in_gene:
+                self._current_gene.append(token)
+
+        return events
 
 
 

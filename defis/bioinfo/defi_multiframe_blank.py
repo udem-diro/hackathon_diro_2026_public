@@ -29,7 +29,7 @@ CODON_TABLE = {
 
 class FrameDecoder:
     def __init__(self, frame_id: int):
-    ##...
+     pass
 
     def process_base(self, base: str):
 

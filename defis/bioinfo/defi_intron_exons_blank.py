@@ -36,9 +36,87 @@ class SplicingDecoder:
         self.introns_found = []
         self.genes_found = []
         self.mature_mrna = ""
+        self._intron_active = False
+        self._intron_buffer = ""
+        self._pending_g = False
+        self._pending_a = False
+        self._codon_buffer = []
+        self._in_gene = False
+        self._current_gene = []
+
+    def _is_valid_base(self, base: str) -> bool:
+        return base in ("A", "U", "G", "C")
+
+    def _append_exon_base(self, base: str, events: list) -> None:
+        self.mature_mrna += base
+        self._codon_buffer.append(base)
+        if len(self._codon_buffer) < 3:
+            return
+
+        codon = "".join(self._codon_buffer)
+        self._codon_buffer.clear()
+
+        token = CODON_TABLE.get(codon, "UNKNOWN")
+        events.append(("CODON", codon, token))
+
+        if token == "START":
+            self._in_gene = True
+            self._current_gene = ["START"]
+            events.append(("START",))
+        elif token == "STOP":
+            if self._in_gene:
+                self._current_gene.append("STOP")
+                self.genes_found.append(list(self._current_gene))
+                events.append(("STOP", list(self._current_gene)))
+                self._current_gene = []
+                self._in_gene = False
+        else:
+            if self._in_gene:
+                self._current_gene.append(token)
 
     def process_base(self, base):
-        return []
+        events = []
+
+        if self._intron_active:
+            if self._pending_a:
+                if base == "G":
+                    self._intron_buffer += "AG"
+                    self.introns_found.append(self._intron_buffer)
+                    events.append(("INTRON_END", self._intron_buffer))
+                    self._intron_buffer = ""
+                    self._intron_active = False
+                    self._pending_a = False
+                    return events
+
+                self._intron_buffer += "A"
+                self._pending_a = False
+
+            if base == "A":
+                self._pending_a = True
+                return events
+
+            self._intron_buffer += base
+            return events
+
+        if self._pending_g:
+            if base == "U":
+                self._intron_active = True
+                self._intron_buffer = "GU"
+                self._pending_g = False
+                events.append(("INTRON_START",))
+                return events
+
+            self._append_exon_base("G", events)
+            self._pending_g = False
+
+        if base == "G":
+            self._pending_g = True
+            return events
+
+        if self._is_valid_base(base):
+            self._append_exon_base(base, events)
+
+        return events
 
     def get_mature_mrna(self):
         return self.mature_mrna
